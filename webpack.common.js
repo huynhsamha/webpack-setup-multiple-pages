@@ -62,42 +62,50 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/blog_single.html'),
-      filename: 'blog_single.html'
+      filename: 'blog_single.html',
+      chunks: ['runtime', 'vendors', 'blog_single']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/blog.html'),
-      filename: 'blog.html'
+      filename: 'blog.html',
+      chunks: ['runtime', 'vendors', 'blog']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/cart.html'),
-      filename: 'cart.html'
+      filename: 'cart.html',
+      chunks: ['runtime', 'vendors', 'cart']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/contact.html'),
-      filename: 'contact.html'
+      filename: 'contact.html',
+      chunks: ['runtime', 'vendors', 'contact']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/index.html'),
-      filename: 'index.html'
+      filename: 'index.html',
+      chunks: ['runtime', 'vendors', 'index']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/product.html'),
-      filename: 'product.html'
+      filename: 'product.html',
+      chunks: ['runtime', 'vendors', 'product']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/regular.html'),
-      filename: 'regular.html'
+      filename: 'regular.html',
+      chunks: ['runtime', 'vendors', 'regular']
     }),
 
     new HtmlWebpackPlugin({
       template: htmlLoader('./views/shop.html'),
-      filename: 'shop.html'
+      filename: 'shop.html',
+      chunks: ['runtime', 'vendors', 'shop']
     })
 
   ],
