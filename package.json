@@ -1,7 +1,7 @@
 {
   "name": "webpack-setup-multiple-pages",
   "version": "1.0.0",
-  "description": "",
+  "description": "Multiple Pages Setup with Webpack and apply a template.",
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/huynhsamha/webpack-setup-multiple-pages.git"
   },
-  "author": "",
+  "author": "huynhsamha",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/huynhsamha/webpack-setup-multiple-pages/issues"
