@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const dist = path.resolve(__dirname, 'dist');
 
-const htmlLoader = path => `!!html-loader?interpolate!${path}`;
+const htmlLoader = path => `!!html-loader?interpolate&attrs=img:data-src!${path}`;
 
 module.exports = {
   entry: {
@@ -40,7 +40,7 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attrs: [],
+            attrs: ['img:data-src'],
             minimize: false,
             removeComments: false,
             collapseWhitespace: false,
