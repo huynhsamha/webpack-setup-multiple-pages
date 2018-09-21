@@ -84,7 +84,7 @@ npm run deploy
 
 #### Package.json
 In file `package.json`:
-```json
+```json5
 "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js", // webpack-dev-server
     "build": "webpack --config webpack.prod.js",                  // webpack build production
