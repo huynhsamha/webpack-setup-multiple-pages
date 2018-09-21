@@ -19,8 +19,9 @@ module.exports = {
     shop: './src/shop.js'
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.join(dist, './js')
+    filename: 'js/[name].bundle.js',
+    publicPath: '/',
+    path: dist
   },
 
   module: {
