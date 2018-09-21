@@ -1,5 +1,5 @@
 {
-  "name": "app-name",
+  "name": "webpack-setup-multiple-pages",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -7,18 +7,20 @@
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "eslint": "eslint ./",
-    "eslint:fix": "eslint ./ --fix"
+    "eslint:fix": "eslint ./ --fix",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huynhsamha/app-name.git"
+    "url": "git+https://github.com/huynhsamha/webpack-setup-multiple-pages.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huynhsamha/app-name/issues"
+    "url": "https://github.com/huynhsamha/webpack-setup-multiple-pages/issues"
   },
-  "homepage": "https://github.com/huynhsamha/app-name#readme",
+  "homepage": "https://github.com/huynhsamha/webpack-setup-multiple-pages#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
@@ -29,6 +31,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "gh-pages": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.9.2",
@@ -41,7 +44,5 @@
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4"
   },
-  "dependencies": {
-    "lodash": "^4.17.11"
-  }
+  "dependencies": {}
 }
