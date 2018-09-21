@@ -2,15 +2,13 @@ const path = require('path');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
-const dist = path.resolve(__dirname, 'dist');
-
 module.exports = merge(common, {
   mode: 'development',
   devServer: {
     /**
      * For development
      */
-    contentBase: dist, // serve the files from the dist directory
+    contentBase: path.resolve(__dirname, './public'),
     port: 4200, // client running on port 4200
     open: true,
     proxy: {
