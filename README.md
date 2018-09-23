@@ -102,3 +102,32 @@ In file `package.json`:
 },
 ```
 
+
+
+
+
+## Document
+
+### SASS and SCSS, PostCSS, Browserslist, CSS Optimization
+
+#### Compile SASS and SCSS
+Stylesheet files (sass or scss) is in directory `./scss/*`, which is imported in JS files (files in `./src/*`)
+
+Files scss or sass is loaded with `MiniCssExtractPlugin` in webpack configure, and creating a chunk file css to `./public/css/*` and add `<link>` tag to html file in `<head>` tag.
+
+
+#### Use PostCSS
+
+Use `postcss-loader` to configure css file, the config file is `postcss.config.js`, which use `postcss-import` and `postcss-preset-env`.
+
+
+#### Use Browserslist
+Browserlist is used by `postcss-preset-env` to config browsers supported by css. The config file for browsers is `.browserslistrc`
+
+
+#### CSS Optimization
+In production, css is compressed to minimize version. In `webpack.prod.js`, we use `OptimizeCSSAssetsPlugin` to do it.
+
+
+#### How to create SCSS files from template OneTech?
+Please try [http://css2sass.herokuapp.com](http://css2sass.herokuapp.com).
