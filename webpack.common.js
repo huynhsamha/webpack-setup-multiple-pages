@@ -1,7 +1,11 @@
 const path = require('path');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const { Pages } = require('./webpack.config');
 
 const dist = path.resolve(__dirname, 'dist');
 
@@ -19,9 +23,9 @@ module.exports = {
     shop: './src/shop.js'
   },
   output: {
-    filename: 'js/[name].bundle.js',
-    publicPath: '/',
-    path: dist
+    publicPath: '', // prefix path should be '/', for github page please use empty path
+    path: dist,
+    filename: 'js/[name].bundle.js' // in directory ./dist/js/
   },
 
   module: {
@@ -29,7 +33,7 @@ module.exports = {
       {
         test: /\.(s*)css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader, // split css to files, not use style-loader
           'css-loader',
           'sass-loader',
           'postcss-loader'
@@ -52,62 +56,26 @@ module.exports = {
   },
 
   plugins: [
+    new MiniCssExtractPlugin({
+      publicPath: '', // prefix path should be '/', for github page please use empty path
+      path: dist,
+      filename: 'css/[name].[hash].css', // in directory ./dist/css/
+      chunkFilename: 'css/[name].[hash].css' // in directory ./dist/css/
+    }),
+
     new CleanWebpackPlugin([dist]),
 
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, './public'),
-        to: dist
-      }
-    ]),
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, './public'),
+      to: dist
+    }]),
 
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/blog_single.html'),
-      filename: 'blog_single.html',
-      chunks: ['runtime', 'vendors', 'blog_single']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/blog.html'),
-      filename: 'blog.html',
-      chunks: ['runtime', 'vendors', 'blog']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/cart.html'),
-      filename: 'cart.html',
-      chunks: ['runtime', 'vendors', 'cart']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/contact.html'),
-      filename: 'contact.html',
-      chunks: ['runtime', 'vendors', 'contact']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/index.html'),
-      filename: 'index.html',
-      chunks: ['runtime', 'vendors', 'index']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/product.html'),
-      filename: 'product.html',
-      chunks: ['runtime', 'vendors', 'product']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/regular.html'),
-      filename: 'regular.html',
-      chunks: ['runtime', 'vendors', 'regular']
-    }),
-
-    new HtmlWebpackPlugin({
-      template: htmlLoader('./views/shop.html'),
-      filename: 'shop.html',
-      chunks: ['runtime', 'vendors', 'shop']
-    })
+    ...Pages.map(({ template, filename, js }) => new HtmlWebpackPlugin({
+      template: htmlLoader(template),
+      filename,
+      chunks: ['runtime', 'vendors', ...js],
+      hash: true
+    }))
 
   ],
 

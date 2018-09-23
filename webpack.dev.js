@@ -6,7 +6,7 @@ module.exports = merge(common, {
   mode: 'development',
   devServer: {
     /**
-     * For development
+     * webpack-dev-server
      */
     contentBase: path.resolve(__dirname, './public'),
     port: 4200, // client running on port 4200
