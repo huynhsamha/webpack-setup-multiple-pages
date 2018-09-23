@@ -54,10 +54,10 @@ The `dist` directory is created
 │   ├── OwlCarousel2-2.2.1
 │   ├── parallax-js-master
 │   └── ...
-└── styles                   # Stylesheets
-    ├── blog_responsive.css
-    ├── blog_single_responsive.css
-    ├── blog_single_styles.css
+└── css                      # Stylesheets
+    ├── blog_responsive.[hash].css
+    ├── blog_single_responsive.[hash].css
+    ├── blog_single_styles.[hash].css
     └── ...
 ├── blog.html                # HTML files
 ├── blog_single.html
@@ -131,3 +131,10 @@ In production, css is compressed to minimize version. In `webpack.prod.js`, we u
 
 #### How to create SCSS files from template OneTech?
 Please try [http://css2sass.herokuapp.com](http://css2sass.herokuapp.com).
+
+
+
+
+
+### Screenshots for components from template OneTech
+<a href="./screenshots/README.md">Screenshots for components</a>
