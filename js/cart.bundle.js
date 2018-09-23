@@ -1,1 +1,208 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{2:function(e,t){$(document).ready(function(){"use strict";var e=!1;$(".header");function t(){window.innerWidth>991&&e&&n()}function n(){$(".page_menu");var t=$(".page_menu_content");TweenMax.to(t,.3,{height:0}),e=!1}t(),function(){if($(".custom_dropdown_placeholder").length&&$(".custom_list").length)var e=$(".custom_dropdown_placeholder"),t=$(".custom_list");e.on("click",function(e){t.hasClass("active")?t.removeClass("active"):t.addClass("active"),$(document).one("click",function e(n){$(n.target).hasClass("clc")?$(document).one("click",e):t.removeClass("active")})}),$(".custom_list a").on("click",function(n){n.preventDefault();$(this).parent().index();e.text($(this).text()).css("opacity","1"),t.hasClass("active")?t.removeClass("active"):t.addClass("active")}),$("select").on("change",function(t){e.text(this.value),$(this).animate({width:e.width()+"px"})})}(),function(){if($(".page_menu").length&&$(".page_menu_content").length){$(".page_menu"),$(".page_menu_content");var t=$(".menu_trigger");if(t.on("click",function(){e?n():function(){$(".page_menu");var t=$(".page_menu_content");TweenMax.set(t,{height:"auto"}),TweenMax.from(t,.3,{height:0}),e=!0}()}),$(".page_menu_item").length){var a=$(".page_menu_item");a.each(function(){var e=$(this);e.hasClass("has-children")&&e.on("click",function(t){t.preventDefault(),t.stopPropagation();var n=e.find("> ul");n.hasClass("active")?(n.toggleClass("active"),TweenMax.to(n,.3,{height:0})):(n.toggleClass("active"),TweenMax.set(n,{height:"auto"}),TweenMax.from(n,.3,{height:0}))})})}}}(),$(window).on("resize",function(){t()})})}},[[2,0]]]);
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[3],{
+
+/***/ 12:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _scss_cart_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var _scss_cart_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_cart_styles_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _scss_cart_responsive_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _scss_cart_responsive_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_cart_responsive_scss__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+/* JS Document */
+
+/** ****************************
+
+[Table of Contents]
+
+1. Vars and Inits
+2. Set Header
+3. Init Custom Dropdown
+4. Init Page Menu
+
+
+******************************/
+
+$(document).ready(() => {
+  'use strict';
+
+  /*
+
+	1. Vars and Inits
+
+	*/
+
+  var menuActive = false;
+  var header = $('.header');
+
+  setHeader();
+
+  initCustomDropdown();
+  initPageMenu();
+
+  $(window).on('resize', () => {
+    setHeader();
+  });
+
+  /*
+
+	2. Set Header
+
+	*/
+
+  function setHeader() {
+    // To pin main nav to the top of the page when it's reached
+    // uncomment the following
+
+    // var controller = new ScrollMagic.Controller(
+    // {
+    // 	globalSceneOptions:
+    // 	{
+    // 		triggerHook: 'onLeave'
+    // 	}
+    // });
+
+    // var pin = new ScrollMagic.Scene(
+    // {
+    // 	triggerElement: '.main_nav'
+    // })
+    // .setPin('.main_nav').addTo(controller);
+
+    if (window.innerWidth > 991 && menuActive) {
+      closeMenu();
+    }
+  }
+
+  /*
+
+	3. Init Custom Dropdown
+
+	*/
+
+  function initCustomDropdown() {
+    if ($('.custom_dropdown_placeholder').length && $('.custom_list').length) {
+      var placeholder = $('.custom_dropdown_placeholder');
+      var list = $('.custom_list');
+    }
+
+    placeholder.on('click', (ev) => {
+      if (list.hasClass('active')) {
+        list.removeClass('active');
+      } else {
+        list.addClass('active');
+      }
+
+      $(document).one('click', function closeForm(e) {
+        if ($(e.target).hasClass('clc')) {
+          $(document).one('click', closeForm);
+        } else {
+          list.removeClass('active');
+        }
+      });
+
+    });
+
+    $('.custom_list a').on('click', function (ev) {
+      ev.preventDefault();
+      var index = $(this).parent().index();
+
+      placeholder.text($(this).text()).css('opacity', '1');
+
+      if (list.hasClass('active')) {
+        list.removeClass('active');
+      } else {
+        list.addClass('active');
+      }
+    });
+
+
+    $('select').on('change', function (e) {
+      placeholder.text(this.value);
+
+      $(this).animate({ width: `${placeholder.width() }px` });
+    });
+  }
+
+  /*
+
+	4. Init Page Menu
+
+	*/
+
+  function initPageMenu() {
+    if ($('.page_menu').length && $('.page_menu_content').length) {
+      var menu = $('.page_menu');
+      var menuContent = $('.page_menu_content');
+      var menuTrigger = $('.menu_trigger');
+
+      // Open / close page menu
+      menuTrigger.on('click', () => {
+        if (!menuActive) {
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+
+      // Handle page menu
+      if ($('.page_menu_item').length) {
+        var items = $('.page_menu_item');
+        items.each(function () {
+          var item = $(this);
+          if (item.hasClass('has-children')) {
+            item.on('click', (evt) => {
+              evt.preventDefault();
+              evt.stopPropagation();
+              var subItem = item.find('> ul');
+						    if (subItem.hasClass('active')) {
+						    	subItem.toggleClass('active');
+                TweenMax.to(subItem, 0.3, { height: 0 });
+						    } else {
+						    	subItem.toggleClass('active');
+						    	TweenMax.set(subItem, { height: 'auto' });
+                TweenMax.from(subItem, 0.3, { height: 0 });
+						    }
+            });
+          }
+        });
+      }
+    }
+  }
+
+  function openMenu() {
+    var menu = $('.page_menu');
+    var menuContent = $('.page_menu_content');
+    TweenMax.set(menuContent, { height: 'auto' });
+    TweenMax.from(menuContent, 0.3, { height: 0 });
+    menuActive = true;
+  }
+
+  function closeMenu() {
+    var menu = $('.page_menu');
+    var menuContent = $('.page_menu_content');
+    TweenMax.to(menuContent, 0.3, { height: 0 });
+    menuActive = false;
+  }
+});
+
+
+/***/ }),
+
+/***/ 13:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ 16:
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ })
+
+},[[12,0]]]);
