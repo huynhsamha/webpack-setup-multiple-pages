@@ -17,6 +17,13 @@ You can download the template in this repository at the [Zip File](https://githu
 git clone https://github.com/huynhsamha/webpack-setup-multiple-pages.git
 ```
 
+### Install packages
+```bash
+npm install
+# or
+yarn
+```
+
 ### Run on development
 ```bash
 npm start

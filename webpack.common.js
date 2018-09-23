@@ -31,12 +31,20 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s*)css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader, // split css to files, not use style-loader
           'css-loader',
-          'sass-loader',
-          'postcss-loader'
+          /**
+           * postcss-loader
+           * Use it after css-loader and style-loader,
+           * but before other preprocessor loaders
+           * like e.g sass|less|stylus-loader.
+           *
+           * Config file: postcss.config.js
+           */
+          'postcss-loader',
+          'sass-loader'
         ]
       },
       {
