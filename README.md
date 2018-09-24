@@ -17,6 +17,13 @@ You can download the template in this repository at the [Zip File](https://githu
 git clone https://github.com/huynhsamha/webpack-setup-multiple-pages.git
 ```
 
+### Install packages
+```bash
+npm install
+# or
+yarn
+```
+
 ### Run on development
 ```bash
 npm start
@@ -47,10 +54,10 @@ The `dist` directory is created
 │   ├── OwlCarousel2-2.2.1
 │   ├── parallax-js-master
 │   └── ...
-└── styles                   # Stylesheets
-    ├── blog_responsive.css
-    ├── blog_single_responsive.css
-    ├── blog_single_styles.css
+└── css                      # Stylesheets
+    ├── blog_responsive.[hash].css
+    ├── blog_single_responsive.[hash].css
+    ├── blog_single_styles.[hash].css
     └── ...
 ├── blog.html                # HTML files
 ├── blog_single.html
@@ -95,3 +102,39 @@ In file `package.json`:
 },
 ```
 
+
+
+
+
+## Document
+
+### SASS and SCSS, PostCSS, Browserslist, CSS Optimization
+
+#### Compile SASS and SCSS
+Stylesheet files (sass or scss) is in directory `./scss/*`, which is imported in JS files (files in `./src/*`)
+
+Files scss or sass is loaded with `MiniCssExtractPlugin` in webpack configure, and creating a chunk file css to `./public/css/*` and add `<link>` tag to html file in `<head>` tag.
+
+
+#### Use PostCSS
+
+Use `postcss-loader` to configure css file, the config file is `postcss.config.js`, which use `postcss-import` and `postcss-preset-env`.
+
+
+#### Use Browserslist
+Browserlist is used by `postcss-preset-env` to config browsers supported by css. The config file for browsers is `.browserslistrc`
+
+
+#### CSS Optimization
+In production, css is compressed to minimize version. In `webpack.prod.js`, we use `OptimizeCSSAssetsPlugin` to do it.
+
+
+#### How to create SCSS files from template OneTech?
+Please try [http://css2sass.herokuapp.com](http://css2sass.herokuapp.com).
+
+
+
+
+
+### Screenshots for components from template OneTech
+<a href="./screenshots/README.md">Screenshots for components</a>

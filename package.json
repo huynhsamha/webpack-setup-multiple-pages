@@ -2,7 +2,6 @@
   "name": "webpack-setup-multiple-pages",
   "version": "1.0.0",
   "description": "Multiple Pages Setup with Webpack and apply a template.",
-  "private": true,
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
@@ -11,21 +10,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/huynhsamha/webpack-setup-multiple-pages.git"
-  },
-  "author": "huynhsamha",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/huynhsamha/webpack-setup-multiple-pages/issues"
-  },
-  "homepage": "https://github.com/huynhsamha/webpack-setup-multiple-pages#readme",
+  "dependencies": {},
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
-    "cssnano": "^4.0.5",
     "eslint": "^5.2.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -37,15 +26,25 @@
     "mini-css-extract-plugin": "^0.4.3",
     "node-sass": "^4.9.2",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "postcss-cssnext": "^3.1.0",
+    "postcss-import": "^12.0.0",
     "postcss-loader": "^2.1.6",
+    "postcss-preset-env": "^6.0.3",
     "sass-loader": "^7.0.3",
-    "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.16.1",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-merge": "^4.1.4"
   },
-  "dependencies": {}
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huynhsamha/webpack-setup-multiple-pages.git"
+  },
+  "homepage": "https://github.com/huynhsamha/webpack-setup-multiple-pages#readme",
+  "author": "huynhsamha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huynhsamha/webpack-setup-multiple-pages/issues"
+  }
 }
